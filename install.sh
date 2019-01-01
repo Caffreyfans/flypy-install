@@ -42,14 +42,15 @@ case $PM in
 	sudo $PM install fcitx fcitx-rime fcitx-ui-classic fcitx-config-gtk grep sed wget -y
 	;;
 "pacman")
-	sudo $PM -Syu -y
+	sudo $PM -Syu
 	sudo $PM -Rs fcitx* ibus -y
 	sudo $PM -S fcitx fcitx-rime fcitx-ui-classic fcitx-config-gtk grep sed wget -y
 	;;
 esac
 rime=~/.config/fcitx/rime
 # rm -rf `ls ${rime}/ | grep -v "^default.yaml$"`
-# sed -i -e "/schema:/d" ${rime}/default.yaml
+cp ${rime}/default.yaml ${rime}/default.yaml.bak
+sed -i -e "/schema:/d" ${rime}/default.yaml
 ROW=`cat ${rime}/default.yaml | grep schema_list: -n | awk -F: '{print $1}'`
 sed -i "${ROW}a\ \ - schema: flypy" ${rime}/default.yaml
 sed -i "${ROW}a\ \ - schema: flypyplus" ${rime}/default.yaml
