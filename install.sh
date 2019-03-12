@@ -49,6 +49,10 @@ case $PM in
 esac
 rime=~/.config/fcitx/rime
 # rm -rf `ls ${rime}/ | grep -v "^default.yaml$"`
+while [ ! -f "${rime}/default.yaml" ]
+do
+	echo "请在输入法中选择 rime 输入法"
+done
 cp ${rime}/default.yaml ${rime}/default.yaml.bak
 sed -i -e "/schema:/d" ${rime}/default.yaml
 ROW=`cat ${rime}/default.yaml | grep schema_list: -n | awk -F: '{print $1}'`
@@ -59,9 +63,10 @@ unzip -o ~/flypy.zip
 cp -r ~/rime/* ${rime}/
 fcitx-remote -r
 rm -r ~/flypy.zip ~/rime
-echo "**********************************************"
-echo "恭喜小鹤音形方案已部署完成请选择 Rime 输入法进行使用"
-echo "Rime 输入法下使用 Crtl+\` 进行方案选择"
-echo "祝你用的愉快"
-echo "**********************************************"
+echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+echo "∧恭喜小鹤音形方案已部署完成请选择 Rime 输入法进行使用 ∨"
+echo "∧Crtl + Space 进行输入法切换                       ∨"
+echo "∧Rime 输入法下使用 Crtl+\` 进行方案选择             ∨"
+echo "∧祝你用的愉快                                      ∨"
+echo "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
 exit 0
