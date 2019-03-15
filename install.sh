@@ -64,9 +64,9 @@ cp -r ~/rime/* ${rime}/
 fcitx-remote -r
 rm -r ~/flypy.zip ~/rime
 echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-echo "∧恭喜小鹤音形方案已部署完成请选择 Rime 输入法进行使用 ∨"
-echo "∧Crtl + Space 进行输入法切换                       ∨"
-echo "∧Rime 输入法下使用 Crtl+\` 进行方案选择             ∨"
-echo "∧祝你用的愉快                                      ∨"
+echo "*恭喜小鹤音形方案已部署完成请选择 Rime 输入法进行使用"
+echo "*Crtl + Space 进行输入法切换"
+echo "*Rime 输入法下使用 Crtl+\` 进行方案选择"
+echo "*祝你用的愉快"
 echo "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
 exit 0
