@@ -54,7 +54,7 @@ wget -O ~/flypy.zip $link
 unzip -oq -d ~/flypy ~/flypy.zip
 cp ~/flypy/*/rime/*.* ${rime_path}/
 cp ~/flypy/*/rime/build/*.* ${rime_path}/
-fcitx-remote -r
+fcitx-remote -r &
 rm -r ~/flypy.zip ~/flypy
 echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 echo "*恭喜小鹤音形方案已部署完成请选择 Rime 输入法进行使用"
