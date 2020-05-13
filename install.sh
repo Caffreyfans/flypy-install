@@ -38,31 +38,24 @@ echo "请输入 sudo 密码: "
 case $PM in
 "apt"|"yum")
 	sudo $PM update -y
-	sudo $PM remove fcitx* ibus -y
 	sudo $PM install fcitx fcitx-rime fcitx-ui-classic fcitx-config-gtk grep sed wget -y
 	;;
 "pacman")
 	sudo $PM -Syu
-	sudo $PM -Rs fcitx* ibus -y
 	sudo $PM -S fcitx fcitx-rime fcitx-ui-classic fcitx-config-gtk grep sed wget -y
 	;;
 esac
-rime=~/.config/fcitx/rime
-# rm -rf `ls ${rime}/ | grep -v "^default.yaml$"`
-while [ ! -f "${rime}/default.yaml" ]
-do
-	echo "请在输入法中选择 rime 输入法"
-done
-cp ${rime}/default.yaml ${rime}/default.yaml.bak
-sed -i -e "/schema:/d" ${rime}/default.yaml
-ROW=`cat ${rime}/default.yaml | grep schema_list: -n | awk -F: '{print $1}'`
-sed -i "${ROW}a\ \ - schema: flypy" ${rime}/default.yaml
-sed -i "${ROW}a\ \ - schema: flypyplus" ${rime}/default.yaml
-wget -O ~/flypy.zip https://github.com/Caffreyfans/flypy-install/releases/download/latest/rime.zip
-unzip -o ~/flypy.zip
-cp -r ~/rime/* ${rime}/
+rime_path=~/.config/fcitx/rime
+echo "请确保输入法中已选择了 rime 输入法，确认后关闭弹出窗口，若使用是英文系统。
+取消只显示当前语言，在输入列表最下部即可找到 rime"
+/bin/sh /usr/bin/fcitx-configtool
+link=http://ys-k.ys168.com/116124324/t3267525IKSMX5SJh8fH/%E5%B0%8F%E9%B9%A4%E9%9F%B3%E5%BD%A2Rime%E5%B9%B3%E5%8F%B0%E9%BC%A0%E9%A1%BB%E7%AE%A1for%20macOS.zip
+wget -O ~/flypy.zip $link
+unzip -oq -d ~/flypy ~/flypy.zip
+cp ~/flypy/*/rime/*.* ${rime_path}/
+cp ~/flypy/*/rime/build/*.* ${rime_path}/
 fcitx-remote -r
-rm -r ~/flypy.zip ~/rime
+rm -r ~/flypy.zip ~/flypy
 echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 echo "*恭喜小鹤音形方案已部署完成请选择 Rime 输入法进行使用"
 echo "*Crtl + Space 进行输入法切换"
