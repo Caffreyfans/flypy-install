@@ -49,11 +49,10 @@ rime_path=~/.config/fcitx/rime
 echo "请确保输入法中已选择了 rime 输入法，确认后关闭弹出窗口，若使用是英文系统。
 取消只显示当前语言，在输入列表最下部即可找到 rime"
 /bin/sh /usr/bin/fcitx-configtool
-link=http://ys-k.ys168.com/116124324/t3267525IKSMX5SJh8fH/%E5%B0%8F%E9%B9%A4%E9%9F%B3%E5%BD%A2Rime%E5%B9%B3%E5%8F%B0%E9%BC%A0%E9%A1%BB%E7%AE%A1for%20macOS.zip
+link=https://github.com/Caffreyfans/flypy-install/raw/master/rime.zip
 wget -O ~/flypy.zip $link
 unzip -oq -d ~/flypy ~/flypy.zip
-cp ~/flypy/*/rime/*.* ${rime_path}/
-cp ~/flypy/*/rime/build/*.* ${rime_path}/
+cp ~/flypy/rime/* ${rime_path}/
 fcitx-remote -r &
 rm -r ~/flypy.zip ~/flypy
 echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
